@@ -1,0 +1,19 @@
+meta {
+  name: Sandbox NFL odds (h2h, spreads, totals)
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/v1/sandbox/sports/americanfootball_nfl/odds?regions=us&markets=h2h,spreads,totals&oddsFormat=american
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. Same response shape as the keyed /v1/sports/{sport_key}/odds endpoint (and as the-odds-api), with static sandbox data.
+}

@@ -1,0 +1,23 @@
+meta {
+  name: NFL arbitrage (keyed)
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/v1/sports/americanfootball_nfl/arbitrage
+  body: none
+  auth: none
+}
+
+headers {
+  X-API-Key: {{apiKey}}
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  10 credits. Pre-match arbitrage opportunities across books. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup
+}

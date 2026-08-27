@@ -1,0 +1,19 @@
+meta {
+  name: List sandbox sports
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/v1/sandbox/sports
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. Lists the sport keys available in the sandbox. The sandbox mirrors real response shapes with static data, so you can build your integration before signing up.
+}

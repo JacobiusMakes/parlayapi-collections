@@ -1,0 +1,19 @@
+meta {
+  name: Sandbox NFL scores
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/v1/sandbox/sports/americanfootball_nfl/scores
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. Scores response shape with static sandbox data.
+}

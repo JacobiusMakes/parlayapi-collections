@@ -1,0 +1,511 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-08-27T15:27:07.000Z",
+  "__export_source": "parlayapi-collections",
+  "resources": [
+    {
+      "_id": "wrk_parlayapi",
+      "_type": "workspace",
+      "name": "ParlayAPI (curated)",
+      "description": "ParlayAPI: real-time sports odds API. 30+ sportsbooks and data sources, player props, arbitrage and +EV tools, prediction markets (Kalshi, Polymarket), historical closing lines from 2005. Drop-in compatible with the-odds-api (same endpoint shapes, /v4 paths, ?apiKey= auth). Free tier: 1,000 credits a month, no card required. Docs: https://parlay-api.com/docs",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_parlayapi_base",
+      "_type": "environment",
+      "parentId": "wrk_parlayapi",
+      "name": "Base Environment",
+      "data": {
+        "baseUrl": "https://parlay-api.com",
+        "apiKey": "paste_your_free_key_here"
+      }
+    },
+    {
+      "_id": "fld_parlayapi_sandbox",
+      "_type": "request_group",
+      "parentId": "wrk_parlayapi",
+      "name": "Keyless: Sandbox",
+      "metaSortKey": 100
+    },
+    {
+      "_id": "req_sandbox_1",
+      "_type": "request",
+      "parentId": "fld_parlayapi_sandbox",
+      "name": "List sandbox sports",
+      "description": "Keyless and free. Lists the sport keys available in the sandbox. The sandbox mirrors real response shapes with static data, so you can build your integration before signing up.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/sandbox/sports",
+      "parameters": [],
+      "headers": [],
+      "metaSortKey": 100
+    },
+    {
+      "_id": "req_sandbox_2",
+      "_type": "request",
+      "parentId": "fld_parlayapi_sandbox",
+      "name": "Sandbox NFL odds (h2h, spreads, totals)",
+      "description": "Keyless and free. Same response shape as the keyed /v1/sports/{sport_key}/odds endpoint (and as the-odds-api), with static sandbox data.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/sandbox/sports/americanfootball_nfl/odds",
+      "parameters": [
+        {
+          "name": "regions",
+          "value": "us"
+        },
+        {
+          "name": "markets",
+          "value": "h2h,spreads,totals"
+        },
+        {
+          "name": "oddsFormat",
+          "value": "american"
+        }
+      ],
+      "headers": [],
+      "metaSortKey": 200
+    },
+    {
+      "_id": "req_sandbox_3",
+      "_type": "request",
+      "parentId": "fld_parlayapi_sandbox",
+      "name": "Sandbox NFL player props",
+      "description": "Keyless and free. Player props response shape with static sandbox data.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/sandbox/sports/americanfootball_nfl/props",
+      "parameters": [],
+      "headers": [],
+      "metaSortKey": 300
+    },
+    {
+      "_id": "req_sandbox_4",
+      "_type": "request",
+      "parentId": "fld_parlayapi_sandbox",
+      "name": "Sandbox NFL arbitrage",
+      "description": "Keyless and free. Cross-book arbitrage finder response shape with static sandbox data.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/sandbox/sports/americanfootball_nfl/arbitrage",
+      "parameters": [],
+      "headers": [],
+      "metaSortKey": 400
+    },
+    {
+      "_id": "req_sandbox_5",
+      "_type": "request",
+      "parentId": "fld_parlayapi_sandbox",
+      "name": "Sandbox NFL events",
+      "description": "Keyless and free. Upcoming events list with static sandbox data.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/sandbox/sports/americanfootball_nfl/events",
+      "parameters": [],
+      "headers": [],
+      "metaSortKey": 500
+    },
+    {
+      "_id": "req_sandbox_6",
+      "_type": "request",
+      "parentId": "fld_parlayapi_sandbox",
+      "name": "Sandbox NFL scores",
+      "description": "Keyless and free. Scores response shape with static sandbox data.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/sandbox/sports/americanfootball_nfl/scores",
+      "parameters": [],
+      "headers": [],
+      "metaSortKey": 600
+    },
+    {
+      "_id": "fld_parlayapi_live",
+      "_type": "request_group",
+      "parentId": "wrk_parlayapi",
+      "name": "Keyless: Live scoreboard",
+      "metaSortKey": 200
+    },
+    {
+      "_id": "req_live_1",
+      "_type": "request",
+      "parentId": "fld_parlayapi_live",
+      "name": "Live: sports on the board",
+      "description": "Keyless and free. Sports that currently have live or upcoming games on the public live scoreboard.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/live/api/sports",
+      "parameters": [],
+      "headers": [],
+      "metaSortKey": 100
+    },
+    {
+      "_id": "req_live_2",
+      "_type": "request",
+      "parentId": "fld_parlayapi_live",
+      "name": "Live: search events",
+      "description": "Keyless and free. Search live and upcoming events by team or league name.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/live/api/search",
+      "parameters": [
+        {
+          "name": "q",
+          "value": "yankees"
+        }
+      ],
+      "headers": [],
+      "metaSortKey": 200
+    },
+    {
+      "_id": "req_live_3",
+      "_type": "request",
+      "parentId": "fld_parlayapi_live",
+      "name": "Live: command center",
+      "description": "Keyless and free. One call that returns the most watchable games right now with live state and odds movement.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/live/api/command_center",
+      "parameters": [
+        {
+          "name": "limit",
+          "value": "5"
+        }
+      ],
+      "headers": [],
+      "metaSortKey": 300
+    },
+    {
+      "_id": "fld_parlayapi_calc",
+      "_type": "request_group",
+      "parentId": "wrk_parlayapi",
+      "name": "Keyless: Calculators",
+      "metaSortKey": 300
+    },
+    {
+      "_id": "req_calc_1",
+      "_type": "request",
+      "parentId": "fld_parlayapi_calc",
+      "name": "Kelly stake calculator",
+      "description": "Keyless and free. Kelly criterion stake sizing. odds accepts American (120, -110) or decimal (2.20). fraction=0.25 is quarter Kelly.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/calc/kelly",
+      "parameters": [
+        {
+          "name": "bankroll",
+          "value": "1000"
+        },
+        {
+          "name": "odds",
+          "value": "120"
+        },
+        {
+          "name": "win_prob",
+          "value": "0.55"
+        },
+        {
+          "name": "fraction",
+          "value": "0.25"
+        }
+      ],
+      "headers": [],
+      "metaSortKey": 100
+    },
+    {
+      "_id": "req_calc_2",
+      "_type": "request",
+      "parentId": "fld_parlayapi_calc",
+      "name": "Edge calculator",
+      "description": "Keyless and free. Expected value of a bet given your estimated true win probability. Alternative mode: pass sharp_over_odds and sharp_under_odds instead of true_prob to devig a sharp book's two-sided price.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/calc/edge",
+      "parameters": [
+        {
+          "name": "odds",
+          "value": "-110"
+        },
+        {
+          "name": "true_prob",
+          "value": "0.55"
+        }
+      ],
+      "headers": [],
+      "metaSortKey": 200
+    },
+    {
+      "_id": "req_calc_3",
+      "_type": "request",
+      "parentId": "fld_parlayapi_calc",
+      "name": "Hedge calculator",
+      "description": "Keyless and free. How much to stake on the other side to lock in equal profit (target=equal_profit) or guarantee break-even (target=break_even).",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/calc/hedge",
+      "parameters": [
+        {
+          "name": "original_stake",
+          "value": "100"
+        },
+        {
+          "name": "original_odds",
+          "value": "250"
+        },
+        {
+          "name": "hedge_odds",
+          "value": "-140"
+        }
+      ],
+      "headers": [],
+      "metaSortKey": 300
+    },
+    {
+      "_id": "req_calc_4",
+      "_type": "request",
+      "parentId": "fld_parlayapi_calc",
+      "name": "Free bet conversion calculator",
+      "description": "Keyless and free. Optimal hedge for converting a free bet or bonus bet into withdrawable cash, with the conversion rate.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/calc/free-bet",
+      "parameters": [
+        {
+          "name": "free_bet_usd",
+          "value": "50"
+        },
+        {
+          "name": "bet_odds",
+          "value": "300"
+        },
+        {
+          "name": "hedge_odds",
+          "value": "-320"
+        }
+      ],
+      "headers": [],
+      "metaSortKey": 400
+    },
+    {
+      "_id": "fld_parlayapi_meta",
+      "_type": "request_group",
+      "parentId": "wrk_parlayapi",
+      "name": "Keyless: Meta and discovery",
+      "metaSortKey": 400
+    },
+    {
+      "_id": "req_meta_1",
+      "_type": "request",
+      "parentId": "fld_parlayapi_meta",
+      "name": "Credit costs per endpoint",
+      "description": "Keyless and free. Exact credit price of every endpoint, including the formula for variable-cost endpoints (markets x regions). Every paid response also carries an x-requests-last header with the exact charge.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/meta/credit-costs",
+      "parameters": [],
+      "headers": [],
+      "metaSortKey": 100
+    },
+    {
+      "_id": "req_meta_2",
+      "_type": "request",
+      "parentId": "fld_parlayapi_meta",
+      "name": "API info and discovery",
+      "description": "Keyless and free. Machine-readable overview: base URLs, auth options, SDK links, docs links.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/meta/api-info",
+      "parameters": [],
+      "headers": [],
+      "metaSortKey": 200
+    },
+    {
+      "_id": "fld_parlayapi_pm",
+      "_type": "request_group",
+      "parentId": "wrk_parlayapi",
+      "name": "Keyless: Prediction markets",
+      "metaSortKey": 500
+    },
+    {
+      "_id": "req_pm_1",
+      "_type": "request",
+      "parentId": "fld_parlayapi_pm",
+      "name": "Search prediction markets",
+      "description": "Keyless and free. Search event markets across Kalshi, Polymarket, and Novig by keyword. Add sources=kalshi to filter, min_volume to cut thin markets.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/prediction-markets/search",
+      "parameters": [
+        {
+          "name": "q",
+          "value": "nfl"
+        },
+        {
+          "name": "limit",
+          "value": "5"
+        }
+      ],
+      "headers": [],
+      "metaSortKey": 100
+    },
+    {
+      "_id": "fld_parlayapi_keyed",
+      "_type": "request_group",
+      "parentId": "wrk_parlayapi",
+      "name": "Keyed: real data with your API key",
+      "metaSortKey": 600
+    },
+    {
+      "_id": "req_keyed_1",
+      "_type": "request",
+      "parentId": "fld_parlayapi_keyed",
+      "name": "List sports (keyed)",
+      "description": "0 credits. Lists all live sport keys. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/sports",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "X-API-Key",
+          "value": "{{ _.apiKey }}"
+        }
+      ],
+      "metaSortKey": 100
+    },
+    {
+      "_id": "req_keyed_2",
+      "_type": "request",
+      "parentId": "fld_parlayapi_keyed",
+      "name": "NFL odds (keyed)",
+      "description": "Costs markets x regions credits (floor 1): h2h + us = 1 credit. Real-time odds from 30+ sportsbooks and data sources. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/sports/americanfootball_nfl/odds",
+      "parameters": [
+        {
+          "name": "regions",
+          "value": "us"
+        },
+        {
+          "name": "markets",
+          "value": "h2h"
+        }
+      ],
+      "headers": [
+        {
+          "name": "X-API-Key",
+          "value": "{{ _.apiKey }}"
+        }
+      ],
+      "metaSortKey": 200
+    },
+    {
+      "_id": "req_keyed_3",
+      "_type": "request",
+      "parentId": "fld_parlayapi_keyed",
+      "name": "NFL player props (keyed)",
+      "description": "3 credits. Player props with American odds across books and DFS apps. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/sports/americanfootball_nfl/props",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "X-API-Key",
+          "value": "{{ _.apiKey }}"
+        }
+      ],
+      "metaSortKey": 300
+    },
+    {
+      "_id": "req_keyed_4",
+      "_type": "request",
+      "parentId": "fld_parlayapi_keyed",
+      "name": "NFL arbitrage (keyed)",
+      "description": "10 credits. Pre-match arbitrage opportunities across books. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/sports/americanfootball_nfl/arbitrage",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "X-API-Key",
+          "value": "{{ _.apiKey }}"
+        }
+      ],
+      "metaSortKey": 400
+    },
+    {
+      "_id": "req_keyed_5",
+      "_type": "request",
+      "parentId": "fld_parlayapi_keyed",
+      "name": "Account usage (keyed)",
+      "description": "Check your remaining credits and current billing period usage. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/account",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "X-API-Key",
+          "value": "{{ _.apiKey }}"
+        }
+      ],
+      "metaSortKey": 500
+    },
+    {
+      "_id": "req_keyed_6",
+      "_type": "request",
+      "parentId": "fld_parlayapi_keyed",
+      "name": "the-odds-api compat: /v4/sports (keyed)",
+      "description": "Drop-in the-odds-api compatibility: same /v4 path shape and ?apiKey= query auth. Point existing the-odds-api code at parlay-api.com and it works. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v4/sports",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "value": "{{ _.apiKey }}"
+        }
+      ],
+      "headers": [],
+      "metaSortKey": 600
+    },
+    {
+      "_id": "fld_parlayapi_mcp",
+      "_type": "request_group",
+      "parentId": "wrk_parlayapi",
+      "name": "Remote MCP",
+      "metaSortKey": 700
+    },
+    {
+      "_id": "req_mcp_1",
+      "_type": "request",
+      "parentId": "fld_parlayapi_mcp",
+      "name": "MCP: initialize",
+      "description": "MCP streamable HTTP endpoint hosted by ParlayAPI. Remote-capable MCP clients (claude.ai connectors, hosted agents) normally do this handshake for you: just point them at https://parlay-api.com/mcp/http. Keyless requests get the discovery and signup tools; add Authorization: Bearer <api_key> for the full set. Some deployments require the Mcp-Session-Id response header from initialize to be echoed on later calls. If this request returns 404 the remote transport is not deployed yet: install the local server instead with: uvx parlayapi-mcp (source: https://github.com/JacobiusMakes/parlay-api-mcp).",
+      "method": "POST",
+      "url": "{{ _.baseUrl }}/mcp/http",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Accept",
+          "value": "application/json, text/event-stream"
+        }
+      ],
+      "metaSortKey": 100,
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"initialize\",\n  \"params\": {\n    \"protocolVersion\": \"2025-06-18\",\n    \"capabilities\": {},\n    \"clientInfo\": {\n      \"name\": \"parlayapi-collections\",\n      \"version\": \"1.0.0\"\n    }\n  }\n}"
+      }
+    },
+    {
+      "_id": "req_mcp_2",
+      "_type": "request",
+      "parentId": "fld_parlayapi_mcp",
+      "name": "MCP: list tools",
+      "description": "MCP streamable HTTP endpoint hosted by ParlayAPI. Remote-capable MCP clients (claude.ai connectors, hosted agents) normally do this handshake for you: just point them at https://parlay-api.com/mcp/http. Keyless requests get the discovery and signup tools; add Authorization: Bearer <api_key> for the full set. Some deployments require the Mcp-Session-Id response header from initialize to be echoed on later calls. If this request returns 404 the remote transport is not deployed yet: install the local server instead with: uvx parlayapi-mcp (source: https://github.com/JacobiusMakes/parlay-api-mcp).",
+      "method": "POST",
+      "url": "{{ _.baseUrl }}/mcp/http",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Accept",
+          "value": "application/json, text/event-stream"
+        }
+      ],
+      "metaSortKey": 200,
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 2,\n  \"method\": \"tools/list\",\n  \"params\": {}\n}"
+      }
+    }
+  ]
+}

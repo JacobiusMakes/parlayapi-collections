@@ -1,0 +1,19 @@
+meta {
+  name: Live: sports on the board
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/live/api/sports
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. Sports that currently have live or upcoming games on the public live scoreboard.
+}

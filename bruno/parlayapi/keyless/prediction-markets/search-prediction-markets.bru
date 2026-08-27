@@ -1,0 +1,19 @@
+meta {
+  name: Search prediction markets
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/v1/prediction-markets/search?q=nfl&limit=5
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. Search event markets across Kalshi, Polymarket, and Novig by keyword. Add sources=kalshi to filter, min_volume to cut thin markets.
+}

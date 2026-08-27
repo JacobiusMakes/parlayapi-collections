@@ -1,0 +1,19 @@
+meta {
+  name: Sandbox NFL events
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/v1/sandbox/sports/americanfootball_nfl/events
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. Upcoming events list with static sandbox data.
+}

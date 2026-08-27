@@ -1,0 +1,19 @@
+meta {
+  name: Credit costs per endpoint
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/v1/meta/credit-costs
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. Exact credit price of every endpoint, including the formula for variable-cost endpoints (markets x regions). Every paid response also carries an x-requests-last header with the exact charge.
+}

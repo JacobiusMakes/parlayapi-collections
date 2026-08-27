@@ -1,0 +1,19 @@
+meta {
+  name: Free bet conversion calculator
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/v1/calc/free-bet?free_bet_usd=50&bet_odds=300&hedge_odds=-320
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. Optimal hedge for converting a free bet or bonus bet into withdrawable cash, with the conversion rate.
+}

@@ -1,0 +1,23 @@
+meta {
+  name: NFL odds (keyed)
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/v1/sports/americanfootball_nfl/odds?regions=us&markets=h2h
+  body: none
+  auth: none
+}
+
+headers {
+  X-API-Key: {{apiKey}}
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Costs markets x regions credits (floor 1): h2h + us = 1 credit. Real-time odds from 30+ sportsbooks and data sources. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup
+}

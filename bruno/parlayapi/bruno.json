@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "parlayapi",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

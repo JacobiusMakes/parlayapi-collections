@@ -1,0 +1,23 @@
+meta {
+  name: Account usage (keyed)
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/v1/account
+  body: none
+  auth: none
+}
+
+headers {
+  X-API-Key: {{apiKey}}
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Check your remaining credits and current billing period usage. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup
+}

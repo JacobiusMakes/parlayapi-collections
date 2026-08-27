@@ -1,0 +1,19 @@
+meta {
+  name: Sandbox NFL player props
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/v1/sandbox/sports/americanfootball_nfl/props
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. Player props response shape with static sandbox data.
+}

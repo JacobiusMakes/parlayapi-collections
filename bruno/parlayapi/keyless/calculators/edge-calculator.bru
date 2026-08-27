@@ -1,0 +1,19 @@
+meta {
+  name: Edge calculator
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/v1/calc/edge?odds=-110&true_prob=0.55
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. Expected value of a bet given your estimated true win probability. Alternative mode: pass sharp_over_odds and sharp_under_odds instead of true_prob to devig a sharp book's two-sided price.
+}

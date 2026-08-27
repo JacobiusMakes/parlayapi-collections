@@ -1,0 +1,23 @@
+meta {
+  name: NFL player props (keyed)
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/v1/sports/americanfootball_nfl/props
+  body: none
+  auth: none
+}
+
+headers {
+  X-API-Key: {{apiKey}}
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  3 credits. Player props with American odds across books and DFS apps. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup
+}

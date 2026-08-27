@@ -1,0 +1,19 @@
+meta {
+  name: Sandbox NFL arbitrage
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/v1/sandbox/sports/americanfootball_nfl/arbitrage
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. Cross-book arbitrage finder response shape with static sandbox data.
+}

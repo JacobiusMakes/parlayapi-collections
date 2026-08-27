@@ -1,0 +1,19 @@
+meta {
+  name: Hedge calculator
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/v1/calc/hedge?original_stake=100&original_odds=250&hedge_odds=-140
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. How much to stake on the other side to lock in equal profit (target=equal_profit) or guarantee break-even (target=break_even).
+}

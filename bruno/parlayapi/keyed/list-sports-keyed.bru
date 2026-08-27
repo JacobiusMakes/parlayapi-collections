@@ -1,0 +1,23 @@
+meta {
+  name: List sports (keyed)
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/v1/sports
+  body: none
+  auth: none
+}
+
+headers {
+  X-API-Key: {{apiKey}}
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  0 credits. Lists all live sport keys. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup
+}

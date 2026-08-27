@@ -1,0 +1,19 @@
+meta {
+  name: Kelly stake calculator
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/v1/calc/kelly?bankroll=1000&odds=120&win_prob=0.55&fraction=0.25
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. Kelly criterion stake sizing. odds accepts American (120, -110) or decimal (2.20). fraction=0.25 is quarter Kelly.
+}

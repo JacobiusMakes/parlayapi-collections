@@ -1,0 +1,19 @@
+meta {
+  name: the-odds-api compat: /v4/sports (keyed)
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/v4/sports?apiKey={{apiKey}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Drop-in the-odds-api compatibility: same /v4 path shape and ?apiKey= query auth. Point existing the-odds-api code at parlay-api.com and it works. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup
+}

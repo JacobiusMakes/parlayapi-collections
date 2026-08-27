@@ -1,0 +1,19 @@
+meta {
+  name: Live: command center
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/live/api/command_center?limit=5
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Keyless and free. One call that returns the most watchable games right now with live state and odds movement.
+}
