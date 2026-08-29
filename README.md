@@ -100,7 +100,7 @@ Status: PASS | Requests: 16 (16 Passed) | Assertions: 16/16
 
 - Full auto-generated Postman collection of the entire API surface (every endpoint, not curated): [`https://parlay-api.com/collections/postman.json`](https://parlay-api.com/collections/postman.json)
 - API docs: [parlay-api.com/docs](https://parlay-api.com/docs) and [OpenAPI spec](https://parlay-api.com/openapi.json)
-- SDKs and ecosystem: [Python](https://github.com/JacobiusMakes/parlay-api-python), [JS](https://github.com/JacobiusMakes/parlay-api-js), [R](https://github.com/JacobiusMakes/parlayapiR), [Google Sheets](https://github.com/JacobiusMakes/parlayapi-sheets), [Raycast](https://github.com/JacobiusMakes/parlayapi-raycast), [MCP server](https://github.com/JacobiusMakes/parlay-api-mcp)
+- SDKs and ecosystem: [Python](https://github.com/JacobiusMakes/parlay-api-python), [JS](https://github.com/JacobiusMakes/parlay-api-js), [R](https://github.com/JacobiusMakes/parlayapiR), [Google Sheets](https://github.com/JacobiusMakes/parlayapi-sheets), [Raycast](https://github.com/JacobiusMakes/parlayapi-raycast), [MCP server](https://github.com/JacobiusMakes/parlay-api-mcp), [Discord bot](https://github.com/JacobiusMakes/parlayapi-discord-bot)
 
 ## Regenerating
 
