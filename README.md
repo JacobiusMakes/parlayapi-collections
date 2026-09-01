@@ -23,7 +23,7 @@ The canonical Postman collection lives on the API's own domain, so a re-import a
 https://parlay-api.com/collections/ParlayAPI.postman_collection.json
 ```
 
-In Postman: **Import > Link**, paste that, done. Thirty requests in six folders, twelve of which run with no API key. The page behind it, with the folder breakdown and what every variable means, is [parlay-api.com/postman](https://parlay-api.com/postman).
+In Postman: **Import > Link**, paste that, done. Thirty requests in six folders, thirteen of which run with no API key. The page behind it, with the folder breakdown and what every variable means, is [parlay-api.com/postman](https://parlay-api.com/postman).
 
 Insomnia, Bruno, Hoppscotch and HTTPie all read Postman Collection v2.1, so the same URL imports into any of them.
 
