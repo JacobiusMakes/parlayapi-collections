@@ -13,6 +13,45 @@ One curated request set, three formats:
 
 Most of the collection needs **no API key at all**. Import it and press send.
 
+The four files above are generated from one catalog in [`tools/generate.py`](tools/generate.py), which is what keeps them identical across formats. Postman users have a second option: a larger, separately curated collection hosted on the API's own domain, which is the one published to the Postman Public API Network. See below.
+
+## Run in Postman
+
+The canonical Postman collection lives on the API's own domain, so a re-import always picks up the current version:
+
+```
+https://parlay-api.com/collections/ParlayAPI.postman_collection.json
+```
+
+In Postman: **Import > Link**, paste that, done. Thirty requests in six folders, twelve of which run with no API key. The page behind it, with the folder breakdown and what every variable means, is [parlay-api.com/postman](https://parlay-api.com/postman).
+
+Insomnia, Bruno, Hoppscotch and HTTPie all read Postman Collection v2.1, so the same URL imports into any of them.
+
+### The button
+
+Once the collection is published to a public Postman workspace, Postman issues a **Run in Postman** button bound to that workspace's collection id. Paste the id into this snippet and drop it wherever it belongs:
+
+```markdown
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/COLLECTION_ID)
+```
+
+```html
+<div class="postman-run-button"
+  data-postman-action="collection/import"
+  data-postman-var-1="COLLECTION_ID"></div>
+<script type="text/javascript">
+  (function (p,o,s,t,m,a,n) {
+    !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+    !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+      (n = o.createElement("script")),
+      (n.id = s+t), (n.async = 1), (n.src = m), n
+    ));
+  }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+</script>
+```
+
+Postman generates both forms under **collection > Share > Via Run in Postman**, so the id can be copied straight out of the app rather than assembled by hand. `COLLECTION_ID` above is a placeholder: the button does not resolve until the workspace is public, which is why the link-import instructions above are the ones to use today.
+
 ## What is in the collection
 
 **Keyless folders (no key, no credits, run instantly):**
@@ -98,6 +137,7 @@ Status: PASS | Requests: 16 (16 Passed) | Assertions: 16/16
 
 ## Related
 
+- Curated Postman collection hosted on the API's own domain, the canonical copy behind the Run in Postman button: [`https://parlay-api.com/collections/ParlayAPI.postman_collection.json`](https://parlay-api.com/collections/ParlayAPI.postman_collection.json) ([page](https://parlay-api.com/postman))
 - Full auto-generated Postman collection of the entire API surface (every endpoint, not curated): [`https://parlay-api.com/collections/postman.json`](https://parlay-api.com/collections/postman.json)
 - API docs: [parlay-api.com/docs](https://parlay-api.com/docs) and [OpenAPI spec](https://parlay-api.com/openapi.json)
 - SDKs and ecosystem: [Python](https://github.com/JacobiusMakes/parlay-api-python), [JS](https://github.com/JacobiusMakes/parlay-api-js), [R](https://github.com/JacobiusMakes/parlayapiR), [Google Sheets](https://github.com/JacobiusMakes/parlayapi-sheets), [Raycast](https://github.com/JacobiusMakes/parlayapi-raycast), [MCP server](https://github.com/JacobiusMakes/parlay-api-mcp), [Discord bot](https://github.com/JacobiusMakes/parlayapi-discord-bot)
