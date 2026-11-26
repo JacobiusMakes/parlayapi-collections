@@ -14,6 +14,18 @@ assert {
   res.status: eq 200
 }
 
+tests {
+  test("Rows belong to the NFL sandbox sample", function () {
+    const body = res.getBody();
+    expect(body.sport_key).to.equal("americanfootball_nfl");
+    expect(body.props).to.be.an("array");
+    expect(body.count).to.equal(body.props.length);
+    for (const row of body.props) {
+      expect(row.is_sandbox).to.equal(true);
+    }
+  });
+}
+
 docs {
-  Keyless and free. Player props response shape with static sandbox data.
+  Practice with labeled NFL example rows. An empty props array contains no usable observation.
 }

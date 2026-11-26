@@ -387,7 +387,7 @@
       "_type": "request",
       "parentId": "fld_parlayapi_keyed",
       "name": "NFL player props (keyed)",
-      "description": "3 credits. Player props with American odds across books and DFS apps. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup",
+      "description": "Metered player props for an account with access. Use the keyless NFL sandbox request to practice. Check current plan access and costs before sending this request.",
       "method": "GET",
       "url": "{{ _.baseUrl }}/v1/sports/americanfootball_nfl/props",
       "parameters": [],
@@ -506,6 +506,40 @@
         "mimeType": "application/json",
         "text": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 2,\n  \"method\": \"tools/list\",\n  \"params\": {}\n}"
       }
+    },
+    {
+      "_id": "req_nba_player_points_dfs",
+      "_type": "request",
+      "parentId": "fld_parlayapi_keyed",
+      "name": "NBA player points across sportsbook and DFS sources (keyed)",
+      "description": "Optional metered request. Requires a key with player-props access. Compare matching events, players, market periods and lines. For legacy flat-payout DFS rows, midpoint prices are normalized comparison values. A source can be absent and a 25-row page can be incomplete.",
+      "method": "GET",
+      "url": "{{ _.baseUrl }}/v1/sports/basketball_nba/props",
+      "parameters": [
+        {
+          "name": "markets",
+          "value": "player_points"
+        },
+        {
+          "name": "bookmakers",
+          "value": "draftkings,prizepicks,underdog"
+        },
+        {
+          "name": "dfsOdds",
+          "value": "midpoint"
+        },
+        {
+          "name": "limit",
+          "value": "25"
+        }
+      ],
+      "headers": [
+        {
+          "name": "X-API-Key",
+          "value": "{{ _.apiKey }}"
+        }
+      ],
+      "metaSortKey": 700
     }
   ]
 }

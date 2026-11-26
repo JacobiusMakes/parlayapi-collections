@@ -568,7 +568,7 @@
               ],
               "query": []
             },
-            "description": "3 credits. Player props with American odds across books and DFS apps. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup"
+            "description": "Metered player props for an account with access. Use the keyless NFL sandbox request to practice. Check current plan access and costs before sending this request."
           },
           "response": []
         },
@@ -647,6 +647,50 @@
               ]
             },
             "description": "Drop-in the-odds-api compatibility: same /v4 path shape and ?apiKey= query auth. Point existing the-odds-api code at parlay-api.com and it works. Get a free API key (1,000 credits a month, no card): https://parlay-api.com/signup"
+          },
+          "response": []
+        },
+        {
+          "name": "NBA player points across sportsbook and DFS sources (keyed)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/sports/basketball_nba/props?markets=player_points&bookmakers=draftkings,prizepicks,underdog&dfsOdds=midpoint&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "sports",
+                "basketball_nba",
+                "props"
+              ],
+              "query": [
+                {
+                  "key": "markets",
+                  "value": "player_points"
+                },
+                {
+                  "key": "bookmakers",
+                  "value": "draftkings,prizepicks,underdog"
+                },
+                {
+                  "key": "dfsOdds",
+                  "value": "midpoint"
+                },
+                {
+                  "key": "limit",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Optional metered request. Requires a key with player-props access. Compare matching events, players, market periods and lines. For legacy flat-payout DFS rows, midpoint prices are normalized comparison values. A source can be absent and a 25-row page can be incomplete."
           },
           "response": []
         }

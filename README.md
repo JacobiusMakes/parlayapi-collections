@@ -17,7 +17,7 @@ Most of the collection needs **no API key at all**. Import it and press send.
 
 **Keyless folders (no key, no credits, run instantly):**
 
-- **Sandbox**: sports list, NFL odds (h2h, spreads, totals), player props, arbitrage, events, scores. Static data with the exact response shapes of the real keyed endpoints, so you can build your integration before signing up.
+- **Sandbox**: sports list, NFL odds (h2h, spreads, totals), player props, arbitrage, events, scores. Labeled example data for rehearsing requests. The NFL sandbox props response wraps its rows in a `props` array. The default keyed props route returns a flat list.
 - **Live scoreboard**: sports on the board, event search, and the command center feed behind [parlay-api.com/live](https://parlay-api.com/live).
 - **Calculators**: Kelly stake sizing, edge/EV, hedging, and free bet conversion.
 - **Meta and discovery**: per-endpoint credit costs and machine-readable API info.
@@ -26,6 +26,8 @@ Most of the collection needs **no API key at all**. Import it and press send.
 **Keyed folder** (uses a `{{apiKey}}` variable): list sports, real NFL odds, player props, arbitrage, account usage, and a the-odds-api `/v4` compatibility call. Get a free key (1,000 credits a month, no card) at [parlay-api.com/signup](https://parlay-api.com/signup).
 
 **Remote MCP folder**: `POST https://parlay-api.com/mcp/http` examples (`initialize`, `tools/list`) for the hosted MCP streamable HTTP endpoint. If it returns 404 the remote transport is not deployed yet; use the local server via `uvx parlayapi-mcp` ([source](https://github.com/JacobiusMakes/parlay-api-mcp)).
+
+[Check a player-props response](bruno/parlayapi/README.md). Rehearse with keyless NFL rows, then inspect a bounded NBA player-points request in your preferred client.
 
 ## Import instructions
 
@@ -37,7 +39,7 @@ Bruno collections are plain files in git, so cloning this repo IS the import:
 git clone https://github.com/JacobiusMakes/parlayapi-collections.git
 ```
 
-Then in the Bruno app: **Open Collection** and pick the `bruno/parlayapi` folder. Select the `Default` environment. To use the keyed folder, edit the environment's `apiKey` value.
+Then in the Bruno app: **Open Collection** and pick the `bruno/parlayapi` folder. Select the `Default` environment. For a keyed request, create a local environment with the same `baseUrl` and configure `apiKey` as a Bruno secret variable. [Bruno secret variables](https://docs.usebruno.com/secrets-management/secret-variables)
 
 Or run the whole keyless set from the terminal without opening an app:
 

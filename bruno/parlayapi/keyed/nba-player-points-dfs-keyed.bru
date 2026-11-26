@@ -1,0 +1,23 @@
+meta {
+  name: NBA player points across sportsbook and DFS sources (keyed)
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/v1/sports/basketball_nba/props?markets=player_points&bookmakers=draftkings,prizepicks,underdog&dfsOdds=midpoint&limit=25
+  body: none
+  auth: none
+}
+
+headers {
+  X-API-Key: {{apiKey}}
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Optional metered request. Requires a key with player-props access. Compare matching events, players, market periods and lines. For legacy flat-payout DFS rows, midpoint prices are normalized comparison values. A source can be absent and a 25-row page can be incomplete.
+}
